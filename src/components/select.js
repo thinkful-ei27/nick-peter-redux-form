@@ -23,7 +23,7 @@ export default class Select extends React.Component {
           }
         
         return (
-            <div className="form-input">
+            <div value="am i a value?" className="form-input">
                <label htmlFor={this.props.input.name}>
                     {this.props.label}
                     {error}
@@ -31,11 +31,10 @@ export default class Select extends React.Component {
                 </label>
                 <select
                   id={this.props.input.name}
-                  type={this.props.type}
                   ref={input => (this.input = input)}
                 >
                     <option value=''>Please select an option</option>
-                    <option value='not-delivered'>My delivery hasn't arrived</option>
+                    <option name={this.props.name} value='not-delivered'>My delivery hasn't arrived</option>
                     <option value='wrong-item'>The wrong item was delivered</option>
                     <option value='missing-part'>Part of my order was missing</option>
                     <option value='damaged-part'>Some of my order arrived damage</option>
