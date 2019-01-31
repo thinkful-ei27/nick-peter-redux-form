@@ -3,6 +3,7 @@ import './form.css';
 import { reduxForm, Field } from 'redux-form';
 import { required, nonEmpty, isValidTrackingNumber, isNumber } from '../validators'
 import Input from './input';
+import Select from './select'
 
 export class HelpForm extends React.Component {
     onSubmit(values) {
@@ -16,13 +17,8 @@ export class HelpForm extends React.Component {
                   <label htmlFor='trackingNumber'>Tracking Number</label>
                   <Field component={Input} type='text' name='trackingNumber' validate={[required, nonEmpty, isValidTrackingNumber, isNumber]}></Field>
                   <label htmlFor='issue'>What is your issue?</label>
-                  <Field component={Input} type='select' name='issue' validate={[required]}>
-                    <option value=''>Please select an option</option>
-                    <option value='not-delivered'>My delivery hasn't arrived</option>
-                    <option value='wrong-item'>The wrong item was delivered</option>
-                    <option value='missing-part'>Part of my order was missing</option>
-                    <option value='damaged-part'>Some of my order arrived damage</option>
-                    <option value='other'>Other (give details below)</option>
+                    {/*change component here to its own Select component and put options in there */}
+                  <Field component={Select} element='select' name='issue' validate={[required]}>
                   </Field>
                   <label htmlFor='details'>Give more details (optional)</label>
                   <Field component={Input} name='details'></Field>
