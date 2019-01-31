@@ -2,6 +2,6 @@ div {
     background-color: blueviolet;
 }
 
-input, label {
+input, label, button {
     display: block;
 }

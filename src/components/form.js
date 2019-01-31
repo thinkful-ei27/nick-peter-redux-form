@@ -1,24 +1,35 @@
 import React from 'react';
 import './form.css';
+import { reduxForm, Field } from 'redux-form';
 
-export default function(){
-    return (
-        <div role='container'>
-          <form>
-              <label htmlFor='trackingNumber'>Tracking Number</label>
-              <input type='text' name='trackingNumber'></input>
-              <label htmlFor='issue'>What is your issue?</label>
-              <select name='issue'>
-                <option value=''>Help!</option>
-                <option value='not-delivered'>My delivery hasn't arrived</option>
-                <option value='wrong-item'>The wrong item was delivered</option>
-                <option value='missing-part'>Part of my order was missing</option>
-                <option value='damaged-part'>Some of my order arrived damage</option>
-                <option value='other'>Other (give details below)</option>
-              </select>
-              <label htmlFor='details'>Give more details (optional)</label>
-              <textarea name='details'></textarea>
-          </form>
-        </div>
-    )
+export class HelpForm extends React.Component {
+    onSubmit(values) {
+        console.log(values);
+    }
+
+    render () {
+        return (
+            <div>
+              <form>
+                  <label htmlFor='trackingNumber'>Tracking Number</label>
+                  <Field component='input' type='text' name='trackingNumber'></Field>
+                  <label htmlFor='issue'>What is your issue?</label>
+                  <Field component='select' name='issue'>
+                    <option value='not-delivered'>My delivery hasn't arrived</option>
+                    <option value='wrong-item'>The wrong item was delivered</option>
+                    <option value='missing-part'>Part of my order was missing</option>
+                    <option value='damaged-part'>Some of my order arrived damage</option>
+                    <option value='other'>Other (give details below)</option>
+                  </Field>
+                  <label htmlFor='details'>Give more details (optional)</label>
+                  <Field component='textarea' name='details'></Field>
+                  <button type='submit'>Submit</button>
+              </form>
+            </div>
+        );
+    }
 }
+
+export default reduxForm({
+   form: 'help'
+})(HelpForm);
