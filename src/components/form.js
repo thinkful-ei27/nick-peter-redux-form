@@ -1,6 +1,7 @@
 import React from 'react';
 import './form.css';
 import { reduxForm, Field } from 'redux-form';
+import { required, nonEmpty, isValidTrackingNumber, isNumber } from '../validators'
 
 export class HelpForm extends React.Component {
     onSubmit(values) {
@@ -10,9 +11,9 @@ export class HelpForm extends React.Component {
     render () {
         return (
             <div>
-              <form>
+              <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                   <label htmlFor='trackingNumber'>Tracking Number</label>
-                  <Field component='input' type='text' name='trackingNumber'></Field>
+                  <Field component='input' type='text' name='trackingNumber' validate={[required, nonEmpty, isValidTrackingNumber, isNumber]}></Field>
                   <label htmlFor='issue'>What is your issue?</label>
                   <Field component='select' name='issue'>
                     <option value='not-delivered'>My delivery hasn't arrived</option>
