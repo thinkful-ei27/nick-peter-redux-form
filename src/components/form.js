@@ -16,7 +16,8 @@ export class HelpForm extends React.Component {
                   <label htmlFor='trackingNumber'>Tracking Number</label>
                   <Field component={Input} type='text' name='trackingNumber' validate={[required, nonEmpty, isValidTrackingNumber, isNumber]}></Field>
                   <label htmlFor='issue'>What is your issue?</label>
-                  <Field component={Input} name='issue'>
+                  <Field component={Input} type='select' name='issue' validate={[required]}>
+                    <option value=''>Please select an option</option>
                     <option value='not-delivered'>My delivery hasn't arrived</option>
                     <option value='wrong-item'>The wrong item was delivered</option>
                     <option value='missing-part'>Part of my order was missing</option>
